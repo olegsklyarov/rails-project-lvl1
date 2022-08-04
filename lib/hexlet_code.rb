@@ -2,6 +2,7 @@
 
 require_relative "hexlet_code/version"
 
+# HexletCode module
 module HexletCode
   # Generate HTML tag
   class Tag
@@ -22,5 +23,11 @@ module HexletCode
       body = yield if block_given?
       "<#{name}#{attr_line}>#{body}</#{name}>"
     end
+  end
+
+  def self.form_for(_, attributes = {})
+    attributes[:action] = attributes[:url] || "#"
+    attributes[:method] ||= "post"
+    Tag.build("form", attributes.except(:url)) { "\n" }
   end
 end
