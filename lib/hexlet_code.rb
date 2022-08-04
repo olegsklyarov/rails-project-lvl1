@@ -3,6 +3,10 @@
 require_relative "hexlet_code/version"
 
 module HexletCode
-  class Error < StandardError; end
-  # Your code goes here...
+  # Generate HTML tag
+  class Tag
+    def self.build(name)
+      "<#{name}></#{name}>"
+    end
+  end
 end
