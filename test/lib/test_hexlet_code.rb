@@ -27,7 +27,6 @@ class TestHexletCode < Minitest::Test
     assert { HexletCode::Tag.build("label", for: "email") { "Email" }.eql? '<label for="email">Email</label>' }
   end
 
-
   def test_that_it_can_generate_div
     assert { HexletCode::Tag.build("div").eql? "<div></div>" }
   end
