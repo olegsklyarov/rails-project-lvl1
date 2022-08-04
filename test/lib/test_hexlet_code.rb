@@ -7,7 +7,11 @@ class TestHexletCode < Minitest::Test
     refute_nil ::HexletCode::VERSION
   end
 
-  def test_that_it_can_generate_empty_tag
+  def test_that_it_can_generate_empty_pairt_tag
     assert { HexletCode::Tag.build("div").eql? "<div></div>" }
+  end
+
+  def test_that_it_can_generate_br_tag
+    assert { HexletCode::Tag.build("br").eql? "<br>" }
   end
 end
