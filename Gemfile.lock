@@ -6,7 +6,12 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
+    crack (0.4.5)
+      rexml
+    hashdiff (1.0.1)
     minitest (5.16.1)
     minitest-power_assert (0.3.1)
       minitest
@@ -15,6 +20,7 @@ GEM
     parser (3.1.2.0)
       ast (~> 2.4.1)
     power_assert (2.0.1)
+    public_suffix (4.0.7)
     rainbow (3.1.1)
     rake (13.0.6)
     regexp_parser (2.5.0)
@@ -32,6 +38,10 @@ GEM
       parser (>= 3.1.1.0)
     ruby-progressbar (1.11.0)
     unicode-display_width (2.1.0)
+    webmock (3.17.0)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
 
 PLATFORMS
   x86_64-darwin-21
@@ -43,6 +53,7 @@ DEPENDENCIES
   minitest-power_assert
   rake (~> 13.0)
   rubocop (~> 1.21)
+  webmock
 
 BUNDLED WITH
    2.3.10
