@@ -3,10 +3,10 @@
 require_relative "../test_helper"
 
 class TestHexletCode < Minitest::Test
-  User = Struct.new(:name, :job, keyword_init: true)
+  User = Struct.new(:name, :job, :gender, keyword_init: true)
 
   def setup
-    @user = User.new name: "Rob"
+    @user = User.new name: 'rob', job: 'hexlet', gender: 'm'
   end
 
   def test_that_it_has_a_version_number
@@ -40,12 +40,20 @@ class TestHexletCode < Minitest::Test
   def test_that_it_can_generate_form
     form_html = HexletCode.form_for @user do |f|
     end
-    assert { form_html.eql? "<form action=\"#\" method=\"post\">\n</form>" }
+    assert { form_html.eql? "<form action=\"#\" method=\"post\"></form>" }
   end
 
   def test_that_it_can_generate_form_with_url
     form_html = HexletCode.form_for @user, url: "/users" do |f|
     end
-    assert { form_html.eql? "<form action=\"/users\" method=\"post\">\n</form>" }
+    assert { form_html.eql? "<form action=\"/users\" method=\"post\"></form>" }
+  end
+
+  def test_that_it_can_generate_form_elements
+    form_html = HexletCode.form_for @user do |f|
+      f.input :name
+      f.input :job, as: :text
+    end
+    assert { form_html.eql? load_fixture("form_with_elements.html") }
   end
 end

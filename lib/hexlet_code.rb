@@ -25,9 +25,22 @@ module HexletCode
     end
   end
 
-  def self.form_for(_, attributes = {})
+  def self.form_for(entity, attributes = {})
+    @entity = entity
+    @inputs = []
     attributes[:action] = attributes[:url] || "#"
     attributes[:method] ||= "post"
-    Tag.build("form", attributes.except(:url)) { "\n" }
+
+    yield HexletCode
+
+    Tag.build("form", attributes.except(:url)) { @inputs.join }
+  end
+
+  def self.input(property, options = {})
+    if options[:as].nil?
+      @inputs << Tag.build("input", name: property, type: "text", value: @entity[property])
+    elsif options[:as] == :text
+      @inputs << Tag.build("textarea", cols: "20", rows: "40", name: property) { @entity[property] }
+    end
   end
 end
