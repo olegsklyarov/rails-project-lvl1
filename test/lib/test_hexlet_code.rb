@@ -6,7 +6,7 @@ class TestHexletCode < Minitest::Test
   User = Struct.new(:name, :job, :gender, keyword_init: true)
 
   def setup
-    @user = User.new name: 'rob', job: 'hexlet', gender: 'm'
+    @user = User.new name: "rob", job: "hexlet", gender: "m"
   end
 
   def test_that_it_has_a_version_number
