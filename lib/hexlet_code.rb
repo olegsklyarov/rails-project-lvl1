@@ -18,11 +18,7 @@ module HexletCode
   def self.input(property, options = {})
     @inputs << Tag.build('label', for: property) { property.capitalize }
     if options[:as].nil?
-      input_attributes = {
-        name: property,
-        type: 'text',
-        value: @entity[property]
-      }
+      input_attributes = { name: property, type: 'text', value: @entity[property] }
       @inputs << Tag.build('input', input_attributes.compact)
     elsif options[:as] == :text
       @inputs << Tag.build('textarea', cols: '20', rows: '40', name: property) { @entity[property] }
