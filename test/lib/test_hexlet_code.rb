@@ -14,14 +14,12 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_that_it_can_generate_form
-    form_html = HexletCode.form_for @user do |f|
-    end
+    form_html = HexletCode.form_for @user
     assert { form_html.eql? '<form action="#" method="post"></form>' }
   end
 
   def test_that_it_can_generate_form_with_url
-    form_html = HexletCode.form_for @user, url: '/users' do |f|
-    end
+    form_html = HexletCode.form_for @user, url: '/users'
     assert { form_html.eql? '<form action="/users" method="post"></form>' }
   end
 

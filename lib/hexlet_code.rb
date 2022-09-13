@@ -12,7 +12,7 @@ module HexletCode
   def self.form_for(entity, attributes = {})
     @entity = entity
     @inputs = []
-    yield HexletCode
+    yield HexletCode if block_given?
     TagForm.build(@inputs.join, attributes)
   end
 

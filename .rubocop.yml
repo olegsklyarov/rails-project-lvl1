@@ -4,5 +4,8 @@ AllCops:
 Style/Documentation:
   Enabled: false
 
+Lint/EmptyBlock:
+  Enabled: true
+
 Layout/LineLength:
   Max: 120
