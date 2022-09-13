@@ -1,32 +1,29 @@
 # frozen_string_literal: true
 
 require_relative 'hexlet_code/version'
-require_relative 'hexlet_code/tag'
+require_relative 'hexlet_code/tag_form'
+require_relative 'hexlet_code/tag_input'
+require_relative 'hexlet_code/tag_label'
+require_relative 'hexlet_code/tag_textarea'
 
 module HexletCode
   def self.form_for(entity, attributes = {})
     @entity = entity
     @inputs = []
-    attributes[:action] = attributes[:url] || '#'
-    attributes[:method] ||= 'post'
-
     yield HexletCode
-
-    Tag.build('form', attributes.except(:url)) { @inputs.join }
+    TagForm.build(@inputs.join, attributes)
   end
 
   def self.input(property, options = {})
-    @inputs << Tag.build('label', for: property) { property.capitalize }
+    @inputs << TagLabel.build(property)
     if options[:as].nil?
-      input_attributes = options.except(:as).merge({ name: property, type: 'text', value: @entity[property] })
-      @inputs << Tag.build('input', input_attributes.compact)
+      @inputs << TagInput.build(property, @entity[property], options.except(:as))
     elsif options[:as] == :text
-      input_attributes = options.except(:as).merge({ name: property, cols: '20', rows: '40' })
-      @inputs << Tag.build('textarea', input_attributes.compact) { @entity[property] }
+      @inputs << TagTextarea.build(property, @entity[property], options.except(:as))
     end
   end
 
   def self.submit(caption = 'Save')
-    @inputs << Tag.build('input', type: 'submit', value: caption)
+    @inputs << TagInput.build(nil, caption, { type: 'submit' })
   end
 end
