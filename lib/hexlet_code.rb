@@ -18,6 +18,8 @@ module HexletCode
 
   def self.input(property, options = {})
     @inputs << TagLabel.build(property)
+    raise NoMethodError unless @entity.members.include?(property)
+
     value = @entity.to_h.fetch(property, nil)
     attributes = options.except(:as)
     if options[:as].nil?

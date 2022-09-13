@@ -62,10 +62,10 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_model_without_property
-    user = User.new
-    form_html = HexletCode.form_for user, url: '#' do |f|
-      f.input :company
+    assert_raises NoMethodError do
+      HexletCode.form_for User.new, url: '#' do |f|
+        f.input :company
+      end
     end
-    assert { form_html.eql? load_html_fixture('06-model-without-property.html') }
   end
 end
