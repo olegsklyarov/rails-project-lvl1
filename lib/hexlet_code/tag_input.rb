@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'tag'
-
 module HexletCode
   class TagInput
     def self.build(property, value, attributes = {})

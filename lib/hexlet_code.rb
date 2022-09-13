@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 require_relative 'hexlet_code/version'
-require_relative 'hexlet_code/tag_form'
-require_relative 'hexlet_code/tag_input'
-require_relative 'hexlet_code/tag_label'
-require_relative 'hexlet_code/tag_textarea'
 
 module HexletCode
+  autoload :Tag, 'hexlet_code/tag'
+  autoload :TagForm, 'hexlet_code/tag_form'
+  autoload :TagInput, 'hexlet_code/tag_input'
+  autoload :TagLabel, 'hexlet_code/tag_label'
+  autoload :TagTextarea, 'hexlet_code/tag_textarea'
+
   def self.form_for(entity, attributes = {})
     @entity = entity
     @inputs = []

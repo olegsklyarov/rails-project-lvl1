@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'tag'
-
 module HexletCode
   class TagForm
     def self.build(body, attributes = {})
