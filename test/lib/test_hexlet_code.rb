@@ -52,4 +52,12 @@ class TestHexletCode < Minitest::Test
     end
     assert { form_html.eql? load_html_fixture('06-form-submit-value.html') }
   end
+
+  def test_that_it_can_generate_input_with_class
+    user = User.new
+    form_html = HexletCode.form_for user, url: '#' do |f|
+      f.input :name, class: 'user-input'
+    end
+    assert { form_html.eql? load_html_fixture('06-form-input-with-class.html') }
+  end
 end
