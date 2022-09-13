@@ -16,10 +16,12 @@ module HexletCode
 
   def self.input(property, options = {})
     @inputs << TagLabel.build(property)
+    value = @entity.to_h.fetch(property, nil)
+    attributes = options.except(:as)
     if options[:as].nil?
-      @inputs << TagInput.build(property, @entity[property], options.except(:as))
+      @inputs << TagInput.build(property, value, attributes)
     elsif options[:as] == :text
-      @inputs << TagTextarea.build(property, @entity[property], options.except(:as))
+      @inputs << TagTextarea.build(property, value, attributes)
     end
   end
 
