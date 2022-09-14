@@ -11,6 +11,6 @@ def load_fixture(filename)
   File.read(File.dirname(__FILE__) + "/fixture/#{filename}")
 end
 
-def load_html_fixture(filename)
-  load_fixture(filename).strip.gsub(/>\s+</, '><')
+def load_html_fixture(test_name)
+  load_fixture("#{test_name}.html").strip.gsub(/>\s+</, '><')
 end
