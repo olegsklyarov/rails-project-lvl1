@@ -5,11 +5,10 @@ module HexletCode
     SINGLE_TAGS = %w[br img input].freeze
 
     def self.generate_attributes_line(attributes = {})
-      attr_pairs = attributes.any? ? [''] : []
-      attributes.each do |key, value|
-        attr_pairs << "#{key}=\"#{value}\""
-      end
-      attr_pairs.join(' ')
+      return '' if attributes.empty?
+
+      attr_pairs = attributes.map { |key, value| "#{key}=\"#{value}\"" }
+      " #{attr_pairs.join(' ')}"
     end
 
     def self.build(name, attributes = {})
