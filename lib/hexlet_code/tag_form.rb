@@ -3,7 +3,7 @@
 module HexletCode
   class TagForm
     def self.build(body, attributes = {})
-      attributes[:action] = attributes[:url] || '#'
+      attributes[:action] = attributes.fetch(:url, '#')
       attributes[:method] ||= 'post'
 
       Tag.build('form', attributes.except(:url)) { body }
