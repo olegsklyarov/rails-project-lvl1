@@ -24,7 +24,7 @@ class TestHexletCode < Minitest::Test
   end
 
   def test_form_elements
-    form_html = HexletCode.form_for @user, url: '/users' do |f|
+    form_html = HexletCode.form_for @user, url: '/users', method: 'post' do |f|
       f.input :name, class: 'user-input'
       f.input :job, as: :text
     end
