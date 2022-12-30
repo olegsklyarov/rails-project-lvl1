@@ -4,7 +4,6 @@ require_relative 'hexlet_code/version'
 
 module HexletCode
   autoload :Render, 'hexlet_code/render'
-  autoload :Form, 'hexlet_code/form'
   autoload :Tag, 'hexlet_code/tag'
   autoload :Input, 'hexlet_code/tags/input'
   autoload :Text, 'hexlet_code/tags/text'
